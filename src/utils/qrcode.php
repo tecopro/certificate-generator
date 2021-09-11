@@ -3,7 +3,7 @@
 /**
  * Certificate Generator
  * Technology Community
- * 2019/2020 Periode
+ * Periode 2019/2020
  * 
  * @package		Qrcode
  * @category	Project

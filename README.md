@@ -4,7 +4,7 @@ Certificate generator for Technology Community Extracurricular at [SMK Negeri 1 
 
 ## Requirements
 
-- PHP >= 7.2
+- PHP >= 7.4
 - Node.js >= 12.x
 - Composer v2
 - ImageMagick
@@ -21,12 +21,12 @@ Certificate generator for Technology Community Extracurricular at [SMK Negeri 1 
    cd certificate-generator
    ```
 
-3. Install dependencies (php)
+3. Install dependencies (PHP)
    ```bash
    composer update
    ```
 
-4. Install dependencies (node.js)
+4. Install dependencies (Node.js)
    ```bash
    npm update
    ```
@@ -59,4 +59,4 @@ npm run generate
 
 ## License
 
-Code licensed under [MIT License](./LICENSE).
+Code licensed under [Apache 2.0 License](./LICENSE).

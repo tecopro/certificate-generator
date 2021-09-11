@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "generate": "php src/generator.php"
+    "generate": "php src/spreader.php"
   },
   "require": {
     "php": "^7.4",

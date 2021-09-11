@@ -12,7 +12,7 @@ const tmp = path.resolve(
 
 // read files in directory
 fs.readdirSync(tmp).forEach((file) => {
-	// ignore .gitkeep or .gitignore file
+	// ignore .gitkeep or .gitignore or data.json file
 	if (
 		file == ".gitkeep" ||
 		file == ".gitignore" ||
@@ -44,11 +44,11 @@ fs.readdirSync(tmp).forEach((file) => {
 	// write pdf result to file
 	document.pipe(fs.createWriteStream(result))
 		.on("finish", () => {
-			// unlink/delete original file
-			fs.unlinkSync(file);
-
 			// cli message
 			console.log("Successfully convert " + path.basename(file) + " file to PDF.");
+
+			// unlink/delete original file
+			fs.unlinkSync(file);
 		})
 		.on("error", console.error);
 });

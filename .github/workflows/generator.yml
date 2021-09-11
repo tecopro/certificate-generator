@@ -11,7 +11,7 @@ on:
 
 jobs:
   generate:
-    name: Generate Certificate (Image)
+    name: Generate Certificate
     runs-on: ubuntu-latest
 
     steps:
@@ -47,6 +47,7 @@ jobs:
         run: |
           composer install --prefer-dist
           npm i --unsafe-perm=true --force
+          mkdir result
 
       - name: Generate Certificate 💡
         run: |
@@ -56,17 +57,8 @@ jobs:
         run: |
           npm run convert
 
-      - name: Commit Changes 🥴
-        run: |
-          git config --local user.email "suluh.webdevelopers@hotmail.com"
-          git config --local user.name "sooluh"
-
-          git add --all
-          git commit -m ":eyes: update certificates"
-
-      - name: GitHub Push
-        uses: ad-m/github-push-action@master
+      - name: Hand it over 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.1
         with:
-          force: true
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ github.ref }}
+          branch: result
+          folder: result

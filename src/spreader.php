@@ -3,7 +3,7 @@
 /**
  * Certificate Generator
  * Technology Community
- * 2019/2020 Periode
+ * Periode 2019/2020
  * 
  * @package		Spreader
  * @category	Project
@@ -138,6 +138,10 @@ class Spreader
 		// store results array to json
 		$results = json_encode($results);
 		file_put_contents(__DIR__ . "/../result/data.json", $results);
+
+		// cli message
+		echo "\n";
+		echo "Successfully collected certificate JSON data.\n";
 	}
 }
 
