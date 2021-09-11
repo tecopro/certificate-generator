@@ -1,0 +1,72 @@
+name: Certificate Generator
+
+on:
+  # enable manual trigger
+  workflow_dispatch:
+
+  # every push
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    name: Generate Certificate (Image)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      - name: Setup PHP ⛓️
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          extensions: gd, iconv, mbstring, intl, bcmath, gmp, dom, json, libxml, xml, xmlwriter, simplexml, tokenizer
+          tools: composer:v2
+
+      - name: Setup Node.js ⛽
+        uses: actions/setup-node@v2
+        with:
+          node-version: "12"
+          cache: "npm"
+
+      - name: Composer Cache 🧵
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache Dependencies 🧶
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install Dependencies ⌛
+        run: |
+          composer install --prefer-dist
+          npm i --unsafe-perm=true --force
+
+      - name: Generate Certificate 💡
+        run: |
+          composer run generate
+
+      - name: Convert Image to PDF ✨
+        run: |
+          npm run convert
+
+      - name: Commit Changes 🥴
+        run: |
+          git config --local user.email "suluh.webdevelopers@hotmail.com"
+          git config --local user.name "sooluh"
+
+          git add --all
+          git commit -m ":eyes: update certificates"
+
+      - name: GitHub Push
+        uses: ad-m/github-push-action@master
+        with:
+          force: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

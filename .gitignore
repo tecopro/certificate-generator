@@ -1,0 +1,8 @@
+# PHP
+/vendor
+
+# Node.js
+/node_modules
+
+# Visual Studio Code
+/.vscode

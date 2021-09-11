@@ -1,0 +1,10 @@
+{
+  "main": "node/convert.js",
+  "scripts": {
+    "convert": "node node/convert.js",
+    "generate": "composer run generate && npm run convert"
+  },
+  "dependencies": {
+    "pdfkit": "^0.12.3"
+  }
+}

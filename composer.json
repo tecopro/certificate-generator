@@ -1,0 +1,30 @@
+{
+  "scripts": {
+    "generate": "php src/generator.php"
+  },
+  "require": {
+    "php": "^7.4",
+    "ext-gd": "*",
+    "ext-iconv": "*",
+    "ext-mbstring": "*",
+    "ext-bcmath": "*",
+    "ext-gmp": "*",
+    "ext-dom": "*",
+    "ext-json": "*",
+    "ext-libxml": "*",
+    "ext-xml": "*",
+    "ext-xmlwriter": "*",
+    "ext-simplexml": "*",
+    "ext-tokenizer": "*",
+    "claviska/simpleimage": "^3.6",
+    "endroid/qr-code": "^4.3",
+    "hashids/hashids": "^4.1",
+    "keboola/csv": "^2.3"
+  },
+  "autoload": {
+    "files": [
+      "src/utils/qrcode.php",
+      "src/utils/certificate.php"
+    ]
+  }
+}
