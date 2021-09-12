@@ -24,6 +24,7 @@
   },
   "autoload": {
     "files": [
+      "src/utils/helper.php",
       "src/utils/qrcode.php",
       "src/utils/certificate.php"
     ]

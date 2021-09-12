@@ -32,24 +32,11 @@ class Certificate
 		// instantiate simpleimage class
 		$image = new SimpleImage();
 		// import skeleton file for further processing
-		$image->fromFile(__DIR__ . "/../assets/skeleton.jpg");
+		$skeleton = assetFile("skeleton.jpg");
+		$image->fromFile($skeleton);
 
 		// set "image" property
 		$this->image = $image;
-	}
-
-	/**
-	 * method to get asset path
-	 * @param string $file
-	 * @param string $directory
-	 * @return string
-	 */
-	private function asset($file, $directory)
-	{
-		$directory = [__DIR__, "..", "assets", $directory, ""];
-		$directory = implode("/", $directory);
-
-		return $directory . $file;
 	}
 
 	/**
@@ -59,7 +46,7 @@ class Certificate
 	 */
 	public function setNumber($number)
 	{
-		$font = $this->asset("montserrat-300.ttf", "fonts");
+		$font = assetFile("montserrat-300.ttf", "fonts");
 
 		$this->image->text($number, [
 			"fontFile" => $font,
@@ -79,7 +66,7 @@ class Certificate
 	 */
 	public function setName($name)
 	{
-		$font = $this->asset("greatvibes-400.ttf", "fonts");
+		$font = assetFile("greatvibes-400.ttf", "fonts");
 
 		$this->image->text($name, [
 			"fontFile" => $font,
@@ -100,7 +87,7 @@ class Certificate
 	public function setPredicate($predicate)
 	{
 		$predicate = "Dengan Predikat " . $predicate;
-		$font = $this->asset("montserrat-400.ttf", "fonts");
+		$font = assetFile("montserrat-400.ttf", "fonts");
 
 		$this->image->text($predicate, [
 			"fontFile" => $font,
@@ -121,7 +108,7 @@ class Certificate
 	public function setPosition($position)
 	{
 		$position = "Atas partisipasinya sebagai " . $position;
-		$font = $this->asset("montserrat-400.ttf", "fonts");
+		$font = assetFile("montserrat-400.ttf", "fonts");
 
 		$this->image->text($position, [
 			"fontFile" => $font,
@@ -142,7 +129,7 @@ class Certificate
 	public function setPeriod($period)
 	{
 		$period = "Periode " . $period;
-		$font = $this->asset("montserrat-400.ttf", "fonts");
+		$font = assetFile("montserrat-400.ttf", "fonts");
 
 		$this->image->text($period, [
 			"fontFile" => $font,
@@ -162,7 +149,7 @@ class Certificate
 	 */
 	public function setPublished($at)
 	{
-		$font = $this->asset("montserrat-400.ttf", "fonts");
+		$font = assetFile("montserrat-400.ttf", "fonts");
 
 		$this->image->text($at, [
 			"fontFile" => $font,
@@ -200,7 +187,7 @@ class Certificate
 	 */
 	public function toFile($filename)
 	{
-		$path = __DIR__ . "/../../result/certificate/" . $filename;
+		$path = resolvePath(__DIR__, "..", "..", "result", "certificate", $filename);
 		$this->image->toFile($path);
 
 		return true;

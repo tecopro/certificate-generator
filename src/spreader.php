@@ -44,42 +44,12 @@ class Spreader
 		$this->hashids = new Hashids("smkn1pml");
 
 		// get environment variable
-		$dotenv = Dotenv::createImmutable(__DIR__ . "/../", ".env");
+		$envpath = resolvePath(__DIR__, "..");
+		$dotenv = Dotenv::createImmutable($envpath, ".env");
 		$dotenv->load();
 
 		// set value of "period" property
 		$this->period = $_ENV["PERIOD"];
-	}
-
-	/**
-	 * method to generate indonesian format date
-	 * @param string $date
-	 * @return string
-	 */
-	private function dateFormat($date)
-	{
-		$month = [
-			1 => "Januari",
-			"Februari",
-			"Maret",
-			"April",
-			"Mei",
-			"Juni",
-			"Juli",
-			"Agustus",
-			"September",
-			"Oktober",
-			"November",
-			"Desember"
-		];
-		$explode = explode("-", $date);
-		$result = [
-			$explode[2],
-			$month[(int) $explode[1]],
-			$explode[0]
-		];
-
-		return implode(" ", $result);
 	}
 
 	/**
@@ -93,7 +63,8 @@ class Spreader
 
 		// read csv
 		$directory = $this->period;
-		$data = new CsvReader(__DIR__ . "/data/$directory/data.csv");
+		$csv = resolvePath(__DIR__, "data", $directory, "data.csv");
+		$data = new CsvReader($csv);
 
 		foreach ($data as $index => $row) {
 			// skip if index is "0"
@@ -114,7 +85,7 @@ class Spreader
 			$predicate = trim($row[4]);
 			$position = trim($row[5]);
 			$period = str_replace("-", "/", $this->period);
-			$date = $this->dateFormat(date("Y-m-d"));
+			$date = dateFormat(date("Y-m-d"));
 
 			$url = "https://teco.smkn1pml.sch.id/cert?code=" . $code;
 			$qrcode = new Qrcode($url);
@@ -151,7 +122,8 @@ class Spreader
 
 		// store results array to json
 		$results = json_encode($results);
-		file_put_contents(__DIR__ . "/../result/data.json", $results);
+		$json = resolvePath(__DIR__, "..", "result", "data.json");
+		file_put_contents($json, $results);
 
 		// cli message
 		echo "\n";
@@ -167,13 +139,13 @@ try {
 	echo "\n";
 
 	// create "result" folder
-	$resultDir = __DIR__ . "/../result";
+	$resultDir = resolvePath(__DIR__, "..", "result");
 	if (!file_exists($resultDir)) {
 		mkdir($resultDir, 0777, true);
 	}
 
 	// create "certificate" folder
-	$certificateDir = __DIR__ . "/../result/certificate";
+	$certificateDir = resolvePath($resultDir, "certificate");
 	if (!file_exists($certificateDir)) {
 		mkdir($certificateDir, 0777, true);
 	}

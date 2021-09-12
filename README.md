@@ -7,7 +7,7 @@ Certificate generator for Technology Community Extracurricular at [SMK Negeri 1 
 - PHP >= 7.4
 - Node.js >= 12.x
 - Composer v2
-- ImageMagick
+- NPM
 
 ## Installation
 

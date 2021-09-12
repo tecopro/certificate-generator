@@ -13,12 +13,9 @@ const resultDir = path.resolve(
 
 // read folder in directory
 fs.readdirSync(resultDir).forEach((file) => {
-	// ignore .gitkeep, .gitignore or data.json file
-	if (
-		file == ".gitkeep" ||
-		file == ".gitignore" ||
-		file == "data.json"
-	) {
+	const { name, ext } = path.parse(file);
+	// ignore non-image file
+	if (![".png", ".jpg", ".jpeg"].includes(ext)) {
 		return;
 	}
 
@@ -39,7 +36,7 @@ fs.readdirSync(resultDir).forEach((file) => {
 	document.end();
 
 	// resolve file result directory path
-	let result = path.parse(file).name + ".pdf";
+	let result = name + ".pdf";
 	result = path.join(resultDir, result);
 
 	// write pdf result to file
