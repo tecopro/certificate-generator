@@ -3,16 +3,17 @@ const fs = require("fs");
 const path = require("path");
 const PDFDocument = require("pdfkit");
 
-// resolve directory path
-const tmp = path.resolve(
+// resolve directory path "certificate"
+const resultDir = path.resolve(
 	__dirname,
 	"..",
-	"result"
+	"result",
+	"certificate"
 );
 
-// read files in directory
-fs.readdirSync(tmp).forEach((file) => {
-	// ignore .gitkeep or .gitignore or data.json file
+// read folder in directory
+fs.readdirSync(resultDir).forEach((file) => {
+	// ignore .gitkeep, .gitignore or data.json file
 	if (
 		file == ".gitkeep" ||
 		file == ".gitignore" ||
@@ -21,7 +22,7 @@ fs.readdirSync(tmp).forEach((file) => {
 		return;
 	}
 
-	file = path.join(tmp, file);
+	file = path.join(resultDir, file);
 	// instantiate pdfkit class
 	let document = new PDFDocument({
 		autoFirstPage: false
@@ -37,9 +38,9 @@ fs.readdirSync(tmp).forEach((file) => {
 	// end document
 	document.end();
 
-	// resolve result dir path
+	// resolve file result directory path
 	let result = path.parse(file).name + ".pdf";
-	result = path.join(tmp, result);
+	result = path.join(resultDir, result);
 
 	// write pdf result to file
 	document.pipe(fs.createWriteStream(result))

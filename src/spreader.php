@@ -16,18 +16,24 @@
 // include autoloader
 require_once __DIR__ . "/../vendor/autoload.php";
 
-// reference csv namespace
+// references to important namespaces
 use Keboola\Csv\CsvReader;
-// reference hashids namespace
 use Hashids\Hashids;
+use Dotenv\Dotenv;
 
 class Spreader
 {
 	/**
-	 * private property to generate short unique id
+	 * property to generate short unique id
 	 * @var Hashids
 	 */
 	private $hashids;
+
+	/**
+	 * property for period
+	 * @var string
+	 */
+	private $period;
 
 	/**
 	 * class constructor
@@ -36,14 +42,21 @@ class Spreader
 	{
 		// instantiate hashids class
 		$this->hashids = new Hashids("smkn1pml");
+
+		// get environment variable
+		$dotenv = Dotenv::createImmutable(__DIR__ . "/../", ".env");
+		$dotenv->load();
+
+		// set value of "period" property
+		$this->period = $_ENV["PERIOD"];
 	}
 
 	/**
-	 * private method to generate indonesian format date
+	 * method to generate indonesian format date
 	 * @param string $date
 	 * @return string
 	 */
-	private function indonesian($date)
+	private function dateFormat($date)
 	{
 		$month = [
 			1 => "Januari",
@@ -79,7 +92,8 @@ class Spreader
 		$results = [];
 
 		// read csv
-		$data = new CsvReader(__DIR__ . "/data/data.csv");
+		$period = $this->period;
+		$data = new CsvReader(__DIR__ . "/data/$period/data.csv");
 
 		foreach ($data as $index => $row) {
 			// skip if index is "0"
@@ -99,8 +113,8 @@ class Spreader
 			// end - name parsing
 			$predicate = trim($row[4]);
 			$position = trim($row[5]);
-			$period = trim($row[6]);
-			$date = $this->indonesian(date("Y-m-d"));
+			$period = str_replace("-", "/", $this->period);
+			$date = $this->dateFormat(date("Y-m-d"));
 
 			$url = "https://teco.smkn1pml.sch.id/cert?id=" . $code;
 			$qrcode = new Qrcode($url);
@@ -142,11 +156,27 @@ class Spreader
 		// cli message
 		echo "\n";
 		echo "Successfully collected certificate JSON data.\n";
+
+		// setting an environment variable
+		// https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-environment-variable
+		exec("echo \"period=$period\" >> \$GITHUB_ENV");
 	}
 }
 
 try {
 	echo "\n";
+
+	// create "result" folder
+	$resultDir = __DIR__ . "/../result";
+	if (!file_exists($resultDir)) {
+		mkdir($resultDir, 0777, true);
+	}
+
+	// create "certificate" folder
+	$certificateDir = __DIR__ . "/../result/certificate";
+	if (!file_exists($certificateDir)) {
+		mkdir($certificateDir, 0777, true);
+	}
 
 	// instantiate spreader class
 	$generator = new Spreader();

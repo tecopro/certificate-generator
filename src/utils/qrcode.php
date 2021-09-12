@@ -23,19 +23,19 @@ use Endroid\QrCode\Writer\PngWriter;
 class Qrcode
 {
 	/**
-	 * private property to hold text tobe qrcode
+	 * property to hold text to be qrcode
 	 * @var string
 	 */
 	private $text;
 
 	/**
-	 * @private property for qrcode result size
+	 * property for qrcode result size
 	 * @var int
 	 */
 	private $size;
 
 	/**
-	 * private property for qrcode result margin
+	 * property for qrcode result margin
 	 * @var int
 	 */
 	private $margin;
@@ -45,14 +45,14 @@ class Qrcode
 	 */
 	function __construct($text, $size = 400, $margin = 30)
 	{
-		// set value of private property
+		// set value of property
 		$this->text = $text;
 		$this->size = $size;
 		$this->margin = $margin;
 	}
 
 	/**
-	 * method to make qrcode into datauri
+	 * method to make qrcode into data uri
 	 * @return mixed
 	 */
 	public function render()

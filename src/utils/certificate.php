@@ -19,7 +19,7 @@ use claviska\SimpleImage;
 class Certificate
 {
 	/**
-	 * private property to create images
+	 * property to create images
 	 * @var SimpleImage
 	 */
 	private $image;
@@ -34,12 +34,12 @@ class Certificate
 		// import skeleton file for further processing
 		$image->fromFile(__DIR__ . "/../assets/skeleton.jpg");
 
-		// set private property
+		// set "image" property
 		$this->image = $image;
 	}
 
 	/**
-	 * private method to get asset path
+	 * method to get asset path
 	 * @param string $file
 	 * @param string $directory
 	 * @return string
@@ -200,7 +200,7 @@ class Certificate
 	 */
 	public function toFile($filename)
 	{
-		$path = __DIR__ . "/../../result/" . $filename;
+		$path = __DIR__ . "/../../result/certificate/" . $filename;
 		$this->image->toFile($path);
 
 		return true;
