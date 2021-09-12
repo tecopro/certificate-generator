@@ -92,8 +92,8 @@ class Spreader
 		$results = [];
 
 		// read csv
-		$period = $this->period;
-		$data = new CsvReader(__DIR__ . "/data/$period/data.csv");
+		$directory = $this->period;
+		$data = new CsvReader(__DIR__ . "/data/$directory/data.csv");
 
 		foreach ($data as $index => $row) {
 			// skip if index is "0"
@@ -116,7 +116,7 @@ class Spreader
 			$period = str_replace("-", "/", $this->period);
 			$date = $this->dateFormat(date("Y-m-d"));
 
-			$url = "https://teco.smkn1pml.sch.id/cert?id=" . $code;
+			$url = "https://teco.smkn1pml.sch.id/cert?code=" . $code;
 			$qrcode = new Qrcode($url);
 			$qrcode = $qrcode->render();
 
@@ -159,7 +159,7 @@ class Spreader
 
 		// setting an environment variable
 		// https://docs.github.com/en/actions/reference/workflow-commands-for-github-actions#setting-an-environment-variable
-		exec("echo \"period=$period\" >> \$GITHUB_ENV");
+		exec("echo \"period=$directory\" >> \$GITHUB_ENV");
 	}
 }
 
