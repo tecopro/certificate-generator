@@ -71,7 +71,7 @@ npm run generate
    sudo apt-get install phpX.X-gd
    ```
 
-2. Requires PHP extension ext-gmp * but it is missing from your system. Install or enable PHP's gmp extension
+2. Requires PHP extension ext-gmp * but it is missing from your system. Install or enable PHP's gmp extension.
    - On Windows  
       a. Open `php.ini`  
       b. Go to `Dynamic Extensions`  
