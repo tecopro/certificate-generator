@@ -4,7 +4,7 @@ Certificate generator for Technology Community Extracurricular at [SMK Negeri 1 
 
 ## Requirements
 
-- PHP >= 7.4
+- PHP >= 7.4 < 8.x
 - Node.js >= 12.x
 - Composer v2
 - NPM
