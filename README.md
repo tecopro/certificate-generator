@@ -60,30 +60,38 @@ npm run generate
 ## FAQ
 
 1. Requires PHP extension ext-gd * but it is missing from your system. Install or enable PHP's GD extension.
-   - On Windows<br />
-      a. Open `php.ini` using text editor or notepad<br />
-      b. Go to `Dynamic Extensions`<br />
-      c. Find `;extension=gd` or `;extension=gd2`<br />
-      d. Remove the semicolon (`;`)<br />
-      e. Save file
-      
-   - On Linux (Note: Change x.x to version number, eg. php7.4-gd)
+   
+   - On Windows
+     
+     1. Open `php.ini` using text editor or notepad
+     2. Go to **Dynamic Extensions**
+     3. Find `;extension=gd` or `;extension=gd2`
+     4. Remove the semicolon (`;`)
+     5. Save file
+     
+   - On Linux
+     
      ```bash
-     sudo apt-get install phpx.x-gd
-     ```
+	 sudo apt install phpx.x-gd
+	 # change x.x to php version number, eg. php7.4-gd
+	 ```
      
 2. Requires PHP extension ext-gmp * but it is missing from your system. Install or enable PHP's GMP extension.
-   - On Windows<br />
-      a. Open `php.ini`<br />
-      b. Go to `Dynamic Extensions`<br />
-      c. Find `;extension=gmp`<br />
-      d. Remove the semicolon (`;`)<br />
-      e. Save file
-      
-   - On Linux (Note: Change x.x to PHP version, eg. php7.4-gmp)
+   
+   - On Windows
+     
+     1. Open `php.ini` using text editor or notepad
+     2. Go to **Dynamic Extensions**
+     3. Find `;extension=gmp`
+     4. Remove the semicolon (`;`)
+     5. Save file
+     
+   - On Linux
+     
      ```bash
-     sudo apt-get install phpx.x-gmp
-     ```
+	 sudo apt install phpx.x-gmp
+	 # change x.x to php version number, eg. php7.4-gmp
+	 ```
 
 ## License
 
