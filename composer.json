@@ -3,7 +3,7 @@
     "generate": "php src/spreader.php"
   },
   "require": {
-    "php": "^7.4",
+    "php": "^7.3|^8.0",
     "ext-gd": "*",
     "ext-iconv": "*",
     "ext-mbstring": "*",
