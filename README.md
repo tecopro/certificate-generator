@@ -57,7 +57,7 @@ Instead of wasting time to generate first and then convert, it's better to use t
 npm run generate
 ```
 
-## FAQ
+## Troubleshooting
 
 1. Requires PHP extension ext-gd * but it is missing from your system. Install or enable PHP's GD extension.
    
