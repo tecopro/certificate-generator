@@ -148,11 +148,11 @@ class Certificate
 	}
 
 	/**
-	 * method to set receiver TECO's name
+	 * method to set organization's name
 	 * @param string $teco
 	 * @return Certificate
 	 */
-	public function setTECO($teco)
+	public function setOrganization($teco)
 	{
 		$font = assetFile("meiryo-700.ttc", "fonts/2020");
 
