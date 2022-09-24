@@ -111,7 +111,7 @@ class Certificate
 	 */
 	public function setName($name)
 	{
-		$font = assetFile("berlinsansfbdemi-700", "fonts/2020");
+		$font = assetFile("berlinsansfbdemi-700.ttf", "fonts/2020");
 
 		$this->image->text($name, [
 			"fontFile" => $font,
