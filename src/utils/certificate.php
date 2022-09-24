@@ -3,13 +3,14 @@
 /**
  * Certificate Generator
  * Technology Community
- * Periode 2019/2020
+ * Periode 2020/2021
  * 
  * @package		Certificate
  * @category	Project
  * 
  * @link		https://teco.smkn1pml.sch.id/certificate
  * @author		Suluh Sulistiawan <suluh.webdevelopers@hotmail.com>
+ * @author 		Sofa Machabba Haeta <mail@sofa.my.id>
  * @license		https://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
  */
 
@@ -32,11 +33,32 @@ class Certificate
 		// instantiate simpleimage class
 		$image = new SimpleImage();
 		// import skeleton file for further processing
-		$skeleton = assetFile("skeleton.jpg");
+		$skeleton = assetFile("skeleton/2020.jpg");
 		$image->fromFile($skeleton);
 
 		// set "image" property
 		$this->image = $image;
+	}
+
+	/**
+	 * method to set certificate header
+	 * @param string $header
+	 * @return Certificate
+	 */
+	public function setHeader($header)
+	{
+		$font = assetFile("madenaparlling-400.ttf", "fonts/2020");
+
+		$this->image->text($header, [
+			"fontFile" => $font,
+			"size" => 325,
+			"color" => "#000000",
+			"anchor" => "top",
+			"yOffset" => 100,
+			"xOffset" => 80
+		]);
+
+		return $this;
 	}
 
 	/**
@@ -46,14 +68,37 @@ class Certificate
 	 */
 	public function setNumber($number)
 	{
-		$font = assetFile("montserrat-300.ttf", "fonts");
+		$font = assetFile("montserrat-300.ttf", "fonts/2020");
 
 		$this->image->text($number, [
 			"fontFile" => $font,
 			"size" => 48,
 			"color" => "#ED1E24",
 			"anchor" => "top",
-			"yOffset" => 879
+			"yOffset" => 450,
+			"xOffset" => 45
+		]);
+
+		return $this;
+	}
+
+	/**
+	 * method to set receiver participant
+	 * @param string $participant
+	 * @return Certificate
+	 */
+	public function setGiveTo($participant)
+	{
+		$participant = $participant;
+		$font = assetFile("montserrat-400.ttf", "fonts/2020");
+
+		$this->image->text($participant, [
+			"fontFile" => $font,
+			"size" => 90,
+			"color" => "#111",
+			"anchor" => "top",
+			"yOffset" => 600,
+			"xOffset" => 80
 		]);
 
 		return $this;
@@ -66,56 +111,79 @@ class Certificate
 	 */
 	public function setName($name)
 	{
-		$font = assetFile("greatvibes-400.ttf", "fonts");
+		$font = assetFile("berlinsansfbdemi-700", "fonts/2020");
 
 		$this->image->text($name, [
 			"fontFile" => $font,
 			"size" => 180,
 			"color" => "#3951A3",
 			"anchor" => "top",
-			"yOffset" => 1223
+			"yOffset" => 735,
+			"xOffset" => 80
 		]);
 
 		return $this;
 	}
 
 	/**
-	 * method to set receiver predicate
-	 * @param string $predicate
+	 * method to set receiver predicate and position
+	 * @param string $predicate, $position
 	 * @return Certificate
 	 */
-	public function setPredicate($predicate)
+	public function setPredicate($predicate, $position)
 	{
-		$predicate = "Dengan Predikat " . $predicate;
-		$font = assetFile("montserrat-400.ttf", "fonts");
+		$predicate = "Dengan predikat " . $predicate . ", atas partisipasinya sebagai " . $position;
+		$font = assetFile("montserrat-400.ttf", "fonts/2020");
 
 		$this->image->text($predicate, [
 			"fontFile" => $font,
-			"size" => 72,
+			"size" => 80,
 			"color" => "#111",
 			"anchor" => "top",
-			"yOffset" => 1458
+			"yOffset" => 980,
+			"xOffset" => 80
 		]);
 
 		return $this;
 	}
 
 	/**
-	 * method to set receiver position
-	 * @param string $position
+	 * method to set receiver TECO's name
+	 * @param string $teco
 	 * @return Certificate
 	 */
-	public function setPosition($position)
+	public function setTECO($teco)
 	{
-		$position = "Atas partisipasinya sebagai " . $position;
-		$font = assetFile("montserrat-400.ttf", "fonts");
+		$font = assetFile("meiryo-700.ttc", "fonts/2020");
 
-		$this->image->text($position, [
+		$this->image->text($teco, [
 			"fontFile" => $font,
-			"size" => 72,
+			"size" => 120,
 			"color" => "#111",
 			"anchor" => "top",
-			"yOffset" => 1645
+			"yOffset" => 1125,
+			"xOffset" => 80
+		]);
+
+		return $this;
+	}
+
+	/**
+	 * method to set receiver School's name
+	 * @param string $nepal
+	 * @return Certificate
+	 */
+	public function setSchool($nepal)
+	{
+		$font = assetFile("meiryo-700.ttc", "fonts/2020");
+
+		$this->image->text($nepal, [
+			"fontFile" => $font,
+			"size" => 140,
+			"color" => "#111",
+			"anchor" => "top",
+			"yOffset" => 1280,
+			"xOffset" => 80
 		]);
 
 		return $this;
@@ -129,14 +197,15 @@ class Certificate
 	public function setPeriod($period)
 	{
 		$period = "Periode " . $period;
-		$font = assetFile("montserrat-400.ttf", "fonts");
+		$font = assetFile("montserrat-400.ttf", "fonts/2020");
 
 		$this->image->text($period, [
 			"fontFile" => $font,
 			"size" => 72,
 			"color" => "#111",
-			"anchor" => "top",
-			"yOffset" => 1925
+			"anchor" => "top right",
+			"yOffset" => 425,
+			"xOffset" => -135,
 		]);
 
 		return $this;
@@ -149,14 +218,15 @@ class Certificate
 	 */
 	public function setPublished($at)
 	{
-		$font = assetFile("montserrat-400.ttf", "fonts");
+		$font = assetFile("montserrat-400.ttf", "fonts/2020");
 
 		$this->image->text($at, [
 			"fontFile" => $font,
 			"size" => 72,
 			"color" => "#111",
 			"anchor" => "top",
-			"yOffset" => 2165
+			"yOffset" => 1500,
+			"xOffset" => 150
 		]);
 
 		return $this;
@@ -171,10 +241,10 @@ class Certificate
 	{
 		$this->image->overlay(
 			$qrcode,
-			"top right",
+			"top left",
 			1,
-			-180,
-			180
+			780,
+			110
 		);
 
 		return $this;

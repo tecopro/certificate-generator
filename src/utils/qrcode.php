@@ -3,13 +3,14 @@
 /**
  * Certificate Generator
  * Technology Community
- * Periode 2019/2020
+ * Periode 2020/2021
  * 
  * @package		Qrcode
  * @category	Project
  * 
  * @link		https://teco.smkn1pml.sch.id/certificate
  * @author		Suluh Sulistiawan <suluh.webdevelopers@hotmail.com>
+ * @author 		Sofa Machabba Haeta <mail@sofa.my.id>
  * @license		https://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
  */
 
