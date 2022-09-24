@@ -3,13 +3,14 @@
 /**
  * Certificate Generator
  * Technology Community
- * Periode 2019/2020
+ * Periode 2020/2021
  * 
  * @package		Spreader
- * @category	Project
+ * @category		Project
  * 
  * @link		https://teco.smkn1pml.sch.id/certificate
  * @author		Suluh Sulistiawan <suluh.webdevelopers@hotmail.com>
+ * @author 		Sofa Machabba Haeta <mail@sofa.my.id>
  * @license		https://www.apache.org/licenses/LICENSE-2.0 Apache License, Version 2.0
  */
 
@@ -91,14 +92,22 @@ class Spreader
 			$qrcode = new Qrcode($url);
 			$qrcode = $qrcode->render();
 
+			$header = "Sertifikat";
+			$participant = "Diberikan kepada :";
+			$organization = "Technology Community";
+			$school = "SMK Negeri 1 Pemalang";
+
 			// instantiate new certificate class
 			$certificate = new Certificate();
 			// render certificate image
 			$certificate
+				->setHeader($header)
 				->setNumber($number)
+				->setGiveTo($participant)
 				->setName($name)
-				->setPredicate($predicate)
-				->setPosition($position)
+				->setOrganization($organization)
+				->setSchool($school)
+				->setPredicate($predicate, $position)
 				->setPeriod($period)
 				->setPublished("Pemalang, " . $date)
 				->setQrcode($qrcode)

@@ -12,23 +12,27 @@ Certificate generator for Technology Community Extracurricular at [SMK Negeri 1 
 ## Installation
 
 1. Clone this repository
+
    ```bash
    git clone https://github.com/tecopro/certificate-generator.git
    ```
 
 2. Change current directory to this repository folder
+
    ```bash
    cd certificate-generator
    ```
 
 3. Install dependencies (PHP)
+
    ```bash
-   composer update
+   composer install
    ```
 
 4. Install dependencies (Node.js)
+
    ```bash
-   npm update
+   npm install
    ```
 
 5. Done~
@@ -40,11 +44,13 @@ Certificate generator for Technology Community Extracurricular at [SMK Negeri 1 
 Do it one-by-one, starting from generating and then converting the resulting image into a PDF file.
 
 1. Generate first
+
    ```bash
    composer run generate
    ```
 
 2. Convert it
+
    ```bash
    npm run convert
    ```
@@ -57,41 +63,47 @@ Instead of wasting time to generate first and then convert, it's better to use t
 npm run generate
 ```
 
+### Old / Archived Files
+
+If you want to use old or archived files, please overwrite `certificate.php`, `helper.php`, `qrcode.php` in **utils** directory and `spreader.php` in **src** directory according to the desired year.
+
+All old or archived files are stored in **archives** folder or by year. For more advanced usage, you can configure each file in **src** or **utils** folder individually.
+
 ## Troubleshooting
 
 1. Requires PHP extension ext-gd * but it is missing from your system. Install or enable PHP's GD extension.
-   
+
    - On Windows
-     
+
      1. Open `php.ini` using text editor or notepad
      2. Go to **Dynamic Extensions**
      3. Find `;extension=gd` or `;extension=gd2`
      4. Remove the semicolon (`;`)
      5. Save file
-     
+
    - On Linux
-     
+
      ```bash
-	 sudo apt install phpx.x-gd
-	 # change x.x to php version number, eg. php7.4-gd
-	 ```
-     
+     sudo apt install phpx.x-gd
+     # change x.x to php version number, eg. php7.4-gd
+     ```
+
 2. Requires PHP extension ext-gmp * but it is missing from your system. Install or enable PHP's GMP extension.
-   
+
    - On Windows
-     
+
      1. Open `php.ini` using text editor or notepad
      2. Go to **Dynamic Extensions**
      3. Find `;extension=gmp`
      4. Remove the semicolon (`;`)
      5. Save file
-     
+
    - On Linux
-     
+
      ```bash
-	 sudo apt install phpx.x-gmp
-	 # change x.x to php version number, eg. php7.4-gmp
-	 ```
+     sudo apt install phpx.x-gmp
+     # change x.x to php version number, eg. php7.4-gmp
+     ```
 
 ## License
 
