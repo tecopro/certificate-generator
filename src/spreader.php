@@ -6,7 +6,7 @@
  * Periode 2020/2021
  * 
  * @package		Spreader
- * @category	Project
+ * @category		Project
  * 
  * @link		https://teco.smkn1pml.sch.id/certificate
  * @author		Suluh Sulistiawan <suluh.webdevelopers@hotmail.com>
@@ -106,8 +106,8 @@ class Spreader
 				->setNumber($number)
 				->setGiveTo($participant)
 				->setName($name)
-				->setOrganization($teco)
-				->setSchool($nepal)
+				->setOrganization($organization)
+				->setSchool($school)
 				->setPredicate($predicate, $position)
 				->setPeriod($period)
 				->setPublished("Pemalang, " . $date)
