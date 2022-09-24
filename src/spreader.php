@@ -106,7 +106,7 @@ class Spreader
 				->setNumber($number)
 				->setGiveTo($participant)
 				->setName($name)
-				->setTECO($teco)
+				->setOrganization($teco)
 				->setSchool($nepal)
 				->setPredicate($predicate, $position)
 				->setPeriod($period)
