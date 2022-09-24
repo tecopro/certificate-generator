@@ -16,21 +16,25 @@ Certificate generator for Technology Community Extracurricular at [SMK Negeri 1 
    ```bash
    git clone https://github.com/tecopro/certificate-generator.git
    ```
+
 2. Change current directory to this repository folder
 
    ```bash
    cd certificate-generator
    ```
+
 3. Install dependencies (PHP)
 
    ```bash
-   composer update
+   composer install
    ```
+
 4. Install dependencies (Node.js)
 
    ```bash
-   npm update
+   npm install
    ```
+
 5. Done~
 
 ## Usage
@@ -44,6 +48,7 @@ Do it one-by-one, starting from generating and then converting the resulting ima
    ```bash
    composer run generate
    ```
+
 2. Convert it
 
    ```bash
@@ -75,12 +80,14 @@ All old or archived files are stored in **archives** folder or by year. For more
      3. Find `;extension=gd` or `;extension=gd2`
      4. Remove the semicolon (`;`)
      5. Save file
+
    - On Linux
 
      ```bash
      sudo apt install phpx.x-gd
      # change x.x to php version number, eg. php7.4-gd
      ```
+
 2. Requires PHP extension ext-gmp * but it is missing from your system. Install or enable PHP's GMP extension.
 
    - On Windows
@@ -90,6 +97,7 @@ All old or archived files are stored in **archives** folder or by year. For more
      3. Find `;extension=gmp`
      4. Remove the semicolon (`;`)
      5. Save file
+
    - On Linux
 
      ```bash
