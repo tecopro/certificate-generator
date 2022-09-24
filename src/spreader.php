@@ -73,7 +73,6 @@ class Spreader
 				continue;
 			}
 
-			
 			$code = (int) trim($row[0]);
 			$code = $this->hashids->encode($code, 220604);
 			$number = trim($row[1]);
@@ -95,8 +94,8 @@ class Spreader
 
 			$header = "Sertifikat";
 			$participant = "Diberikan kepada :";
-			$teco = "Technology Community";
-			$nepal = "SMK Negeri 1 Pemalang";
+			$organization = "Technology Community";
+			$school = "SMK Negeri 1 Pemalang";
 
 			// instantiate new certificate class
 			$certificate = new Certificate();
